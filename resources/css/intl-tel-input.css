@@ -1,0 +1,18 @@
+@import "intl-tel-input/build/css/intlTelInput.css";
+.iti {
+    width: 100%;
+    display: block;
+}
+@reference "tailwindcss";
+.iti__selected-dial-code {
+    @apply text-zinc-700 dark:text-zinc-300;
+}
+.iti__dropdown-content {
+    @apply bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300;
+}
+.iti__search-input {
+    @apply text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-800;
+}
+.iti--inline-dropdown .iti__dropdown-content {
+    @apply border-zinc-300 dark:border-zinc-700;
+}
