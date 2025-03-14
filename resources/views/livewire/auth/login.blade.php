@@ -12,13 +12,20 @@ use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
 
 new #[Layout('components.layouts.auth')] class extends Component {
-    #[Validate('required|string|email')]
     public string $email = '';
-
-    #[Validate('required|string')]
     public string $password = '';
-
     public bool $remember = false;
+    public string $turnstile_challenge = '';
+
+    public function rules()
+    {
+        return [
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+            'remember' => 'boolean',
+            'turnstile_challenge' => ['required', 'turnstile'],
+        ];
+    }
 
     /**
      * Handle an incoming authentication request.
@@ -29,8 +36,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             RateLimiter::hit($this->throttleKey());
+
+            $this->turnstile_challenge = '';
+            $this->js('window.turnstile.reset();');
 
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
@@ -48,7 +58,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
      */
     protected function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -69,58 +79,55 @@ new #[Layout('components.layouts.auth')] class extends Component {
      */
     protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
+        return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
     }
 }; ?>
 
 <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
+  <x-slot:title>{{ __('Login') }}</x-slot>
+  <x-slot:description>{{ __('Login to your account') }}</x-slot>
+  <x-slot:keywords>{{ __('login') }} {{ strtolower(config('app.name')) }}</x-slot>
+  <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
 
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
+  <!-- Session Status -->
+  <x-auth-session-status class="text-center" :status="session('status')" />
 
-    <form wire:submit="login" class="flex flex-col gap-6">
-        <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email address')"
-            type="email"
-            required
-            autofocus
-            autocomplete="email"
-            placeholder="email@example.com"
-        />
+  <form wire:submit="login" class="flex flex-col gap-6">
+    <!-- Email Address -->
+    <flux:input wire:model="email" :label="__('Email address')" type="email" required autofocus autocomplete="email"
+      placeholder="email@example.com" />
 
-        <!-- Password -->
-        <div class="relative">
-            <flux:input
-                wire:model="password"
-                :label="__('Password')"
-                type="password"
-                required
-                autocomplete="current-password"
-                :placeholder="__('Password')"
-            />
+    <!-- Password -->
+    <div class="relative">
+      <flux:input wire:model="password" :label="__('Password')" type="password" required autocomplete="current-password"
+        :placeholder="__('Password')" />
 
-            @if (Route::has('password.request'))
-                <flux:link class="absolute right-0 top-0 text-sm" :href="route('password.request')" wire:navigate>
-                    {{ __('Forgot your password?') }}
-                </flux:link>
-            @endif
-        </div>
+      @if (Route::has('password.request'))
+        <flux:link class="absolute right-0 top-0 text-sm" :href="route('password.request')">
+          {{ __('Forgot your password?') }}
+        </flux:link>
+      @endif
+    </div>
 
-        <!-- Remember Me -->
-        <flux:checkbox wire:model="remember" :label="__('Remember me')" />
+    <!-- Remember Me -->
+    <flux:checkbox wire:model="remember" :label="__('Remember me')" />
 
-        <div class="flex items-center justify-end">
-            <flux:button variant="primary" type="submit" class="w-full">{{ __('Log in') }}</flux:button>
-        </div>
-    </form>
+    <!-- Cloudflare Turnstile -->
+    <div>
+      <x-turnstile wire:model="turnstile_challenge" data-theme="auto"
+        data-language="{{ str_replace('_', '-', app()->getLocale()) }}" />
+      <flux:error name="turnstile_challenge" />
+    </div>
 
-    @if (Route::has('register'))
-        <div class="space-x-1 text-center text-sm text-zinc-600 dark:text-zinc-400">
-            {{ __('Don\'t have an account?') }}
-            <flux:link :href="route('register')">{{ __('Sign up') }}</flux:link>
-        </div>
-    @endif
+    <div class="flex items-center justify-end">
+      <flux:button variant="primary" type="submit" class="w-full">{{ __('Log in') }}</flux:button>
+    </div>
+  </form>
+
+  @if (Route::has('register'))
+    <div class="space-x-1 text-center text-sm text-zinc-600 dark:text-zinc-400">
+      {{ __('Don\'t have an account?') }}
+      <flux:link :href="route('register')">{{ __('Sign up') }}</flux:link>
+    </div>
+  @endif
 </div>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   @include('partials.head')
   @stack('headscripts')
+  @turnstileScripts()
 </head>
 
 <body class="min-h-screen bg-zinc-100 antialiased dark:bg-linear-to-b dark:from-zinc-950 dark:to-zinc-900">

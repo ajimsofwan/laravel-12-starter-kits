@@ -14,6 +14,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
     public string $phone = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public string $turnstile_challenge = '';
     public bool $terms = false;
 
     /**
@@ -21,18 +22,18 @@ new #[Layout('components.layouts.auth')] class extends Component {
      */
     public function register(): void
     {
-        $phone = new Propaganistas\LaravelPhone\PhoneNumber($this->phone);
-        $this->phone = $phone->formatE164();
-
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'phone' => ['required', 'phone', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::min(8)->mixedCase()->letters()->numbers()->uncompromised()],
+            'turnstile_challenge' => ['required', 'turnstile'],
             'terms' => ['required', 'accepted'],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
+        $phone = new Propaganistas\LaravelPhone\PhoneNumber($validated['phone']);
+        $validated['phone'] = $phone->formatE164();
 
         event(new Registered(($user = User::create($validated))));
 
@@ -43,7 +44,9 @@ new #[Layout('components.layouts.auth')] class extends Component {
 }; ?>
 
 <div class="flex flex-col gap-6">
-  <x-slot:title>Create an account</x-slot>
+  <x-slot:title>{{ __('Sign Up') }}</x-slot>
+  <x-slot:description>{{ __('Create an account') }}</x-slot>
+  <x-slot:keywords>{{ __('sign up, register, ') }} {{ strtolower(config('app.name')) }}</x-slot>
   <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
   <!-- Session Status -->
   <x-auth-session-status class="text-center" :status="session('status')" />
@@ -60,7 +63,6 @@ new #[Layout('components.layouts.auth')] class extends Component {
     <!-- Phone -->
     <flux:field>
       <flux:label>{{ __('Phone') }}</flux:label>
-
       <div wire:ignore>
         <flux:input id="intl-tel-input" type="text" />
       </div>
@@ -78,6 +80,13 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
     <flux:checkbox wire:model="terms" label="I agree to the terms and conditions" />
 
+    <!-- Cloudflare Turnstile -->
+    <div>
+      <x-turnstile wire:model="turnstile_challenge" data-theme="auto"
+        data-language="{{ str_replace('_', '-', app()->getLocale()) }}" />
+      <flux:error name="turnstile_challenge" />
+    </div>
+
     <div class="flex items-center justify-end">
       <flux:button type="submit" variant="primary" class="w-full">
         {{ __('Create account') }}
@@ -87,7 +96,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
   <div class="space-x-1 text-center text-sm text-zinc-600 dark:text-zinc-400">
     {{ __('Already have an account?') }}
-    <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
+    <flux:link :href="route('login')">{{ __('Log in') }}</flux:link>
   </div>
 </div>
 @push('headscripts')
