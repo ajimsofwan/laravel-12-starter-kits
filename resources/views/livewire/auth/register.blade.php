@@ -34,8 +34,9 @@ new #[Layout('components.layouts.auth')] class extends Component {
         $validated['password'] = Hash::make($validated['password']);
         $phone = new Propaganistas\LaravelPhone\PhoneNumber($validated['phone']);
         $validated['phone'] = $phone->formatE164();
-
-        event(new Registered(($user = User::create($validated))));
+        $user = User::create($validated);
+        $user->assignRole('user');
+        event(new Registered($user));
 
         Auth::login($user);
 
