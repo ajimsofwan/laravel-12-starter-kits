@@ -20,6 +20,7 @@ test('reset password link can be requested', function () {
 
     Volt::test('auth.forgot-password')
         ->set('email', $user->email)
+        ->set('turnstile_challenge', 'chaptcha')
         ->call('sendPasswordResetLink');
 
     Notification::assertSentTo($user, ResetPassword::class);
@@ -32,6 +33,7 @@ test('reset password screen can be rendered', function () {
 
     Volt::test('auth.forgot-password')
         ->set('email', $user->email)
+        ->set('turnstile_challenge', 'chaptcha')
         ->call('sendPasswordResetLink');
 
     Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
@@ -50,6 +52,7 @@ test('password can be reset with valid token', function () {
 
     Volt::test('auth.forgot-password')
         ->set('email', $user->email)
+        ->set('turnstile_challenge', 'chaptcha')
         ->call('sendPasswordResetLink');
 
     Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {

@@ -17,6 +17,7 @@ test('users can authenticate using the login screen', function () {
     $response = LivewireVolt::test('auth.login')
         ->set('email', $user->email)
         ->set('password', 'password')
+        ->set('turnstile_challenge', 'chaptcha')
         ->call('login');
 
     $response
@@ -32,6 +33,7 @@ test('users can not authenticate with invalid password', function () {
     $this->post('/login', [
         'email' => $user->email,
         'password' => 'wrong-password',
+        'turnstile_challenge' => 'chaptcha',
     ]);
 
     $this->assertGuest();

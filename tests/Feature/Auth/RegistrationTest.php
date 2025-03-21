@@ -11,11 +11,16 @@ test('registration screen can be rendered', function () {
 });
 
 test('new users can register', function () {
+    $this->artisan('db:seed', ['--class' => 'RolePermissionSeeder']);
+
     $response = Volt::test('auth.register')
         ->set('name', 'Test User')
         ->set('email', 'test@example.com')
-        ->set('password', 'password')
-        ->set('password_confirmation', 'password')
+        ->set('phone', '+6281234567890')
+        ->set('password', 'My-Password00')
+        ->set('password_confirmation', 'My-Password00')
+        ->set('turnstile_challenge', 'chaptcha')
+        ->set('terms', 'accepted')
         ->call('register');
 
     $response
