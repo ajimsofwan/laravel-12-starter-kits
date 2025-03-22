@@ -40,7 +40,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
     <!-- Cloudflare Turnstile -->
     <div>
-      <x-turnstile wire:model="turnstile_challenge" data-theme="auto"
+      <x-turnstile wire:model="turnstile_challenge" data-theme="auto" data-size="flexible"
         data-language="{{ str_replace('_', '-', app()->getLocale()) }}" />
       <flux:error name="turnstile_challenge" />
     </div>

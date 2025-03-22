@@ -7,7 +7,7 @@
     <div class="flex-shrink-0 size-5 group-hover:text-accent-content">
       <flux:icon name="{{ $icon }}" class="size-5" />
     </div>
-    <div class="flex-1 ml-3 text-left whitespace-nowrap group-hover:text-accent-content">
+    <div class="flex-1 ml-3 text-left whitespace-nowrap group-hover:text-primary">
       {{ $slot }}</div>
     <svg aria-hidden="true" class="size-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd"
@@ -15,6 +15,6 @@
         clip-rule="evenodd"></path>
     </svg>
   </div>
-  <div class="flex-none w-1 my-1.5 bg-accent-content rounded-l-md {{ $active ?? false ? '' : 'hidden' }}">
+  <div class="flex-none w-1 my-1.5 bg-primary rounded-l-md {{ $active ?? false ? '' : 'hidden' }}">
   </div>
 </a>

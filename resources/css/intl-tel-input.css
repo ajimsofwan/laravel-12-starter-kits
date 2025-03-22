@@ -3,7 +3,7 @@
     width: 100%;
     display: block;
 }
-@reference "tailwindcss";
+@reference "./app.css";
 .iti__selected-dial-code {
     @apply text-zinc-700 dark:text-zinc-300;
 }

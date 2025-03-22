@@ -9,7 +9,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+    --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
 
@@ -28,6 +28,9 @@
     --color-accent: var(--color-blue-500);
     --color-accent-content: var(--color-blue-600);
     --color-accent-foreground: var(--color-white);
+    --color-primary-light: var(--color-blue-500);
+    --color-primary: var(--color-blue-600);
+    --color-primary-dark: var(--color-blue-700);
 }
 
 @layer theme {
@@ -67,5 +70,9 @@ select:focus[data-flux-control] {
 } */
 
 nav .active {
-  @apply my-1 text-blue-600 bg-blue-600/10 dark:text-blue-500;
+    @apply my-1 text-blue-600 bg-blue-600/10 dark:text-blue-500;
 }
+
+/* body {
+    font-family: "Figtree", sans-serif;
+} */
