@@ -8,7 +8,7 @@
 <body class="min-h-screen bg-white dark:bg-zinc-800">
 
   <flux:sidebar sticky stashable
-    class="border-r border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 px-0 shadow-lg">
+    class="border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 px-0 shadow-lg">
     <div class="flex justify-between items-end px-4">
       <div class="mr-5 flex items-center space-x-2">
         <x-app-logo />
@@ -21,6 +21,10 @@
           {{ __('Dashboard') }}
         </x-nav-link>
         @role('admin|moderator')
+        <x-nav-link icon="users" :href="route('users')" :active="request()->is('users')" wire:navigate>
+          {{ __('Users') }}
+        </x-nav-link>
+        @endrole
         <li x-data="{ open: {{ request()->is('settings*') ? 'true' : 'false' }} }">
           <x-nav-link-dropdown icon="server" :active="request()->is('settings*')">
             Settings
@@ -44,7 +48,6 @@
             </x-nav-link-dropdown-item>
           </ul>
         </li>
-        @endrole
       </ul>
     </flux:navlist>
 
@@ -102,24 +105,25 @@
     </flux:dropdown>
   </flux:sidebar>
   <!-- Mobile User Menu -->
-  <flux:header sticky class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 shadow-lg">
+  <flux:header sticky class="bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700 shadow-lg">
 
     <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
     <flux:spacer />
 
     <div x-data>
-      <button x-show="$flux.appearance == 'dark' || $flux.appearance == 'system'" @click="$flux.appearance = 'light'" x-transition:enter.scale.80
-        x-cloak type="button"
+      <button x-show="$flux.appearance == 'dark' || $flux.appearance == 'system'" @click="$flux.appearance = 'light'"
+        x-transition:enter.scale.80 x-cloak type="button"
         class="p-2 mr-2 text-zinc-500 rounded-lg hover:text-amber-400 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-amber-400 dark:hover:bg-zinc-700 focus:ring-4 focus:ring-zinc-300 dark:focus:ring-zinc-600">
         <flux:icon.sun variant="solid" class="size-6" />
       </button>
-      <button x-show="$flux.appearance == 'light'" @click="$flux.appearance = 'dark'" x-transition:enter.scale.80 x-cloak type="button"
+      <button x-show="$flux.appearance == 'light'" @click="$flux.appearance = 'dark'" x-transition:enter.scale.80
+        x-cloak type="button"
         class="p-2 mr-2 text-zinc-500 rounded-lg hover:text-amber-400 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-amber-400 dark:hover:bg-zinc-700 focus:ring-4 focus:ring-zinc-300 dark:focus:ring-zinc-600">
         <flux:icon.moon variant="solid" class="size-6" />
       </button>
     </div>
-    
+
     {{-- <flux:dropdown position="top" align="end">
       <flux:profile :initials="auth()->user()->initials()" icon-trailing="chevron-down" />
 
@@ -160,11 +164,19 @@
     </flux:dropdown> --}}
   </flux:header>
 
-  <flux:main>
+  <flux:main class="dark:bg-zinc-900">
     {{ $slot }}
   </flux:main>
 
   @fluxScripts
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.magic('clipboard', () => subject => {
+        navigator.clipboard.writeText(subject)
+      })
+    });
+  </script>
 </body>
 
 </html>

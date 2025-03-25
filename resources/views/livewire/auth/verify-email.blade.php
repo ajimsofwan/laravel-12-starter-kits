@@ -52,6 +52,9 @@ new #[Layout('components.layouts.auth')] class extends Component {
       {{ __('Resend verification email') }}
     </flux:button>
 
+    <flux:link class="text-sm cursor-pointer" href="{{ route('settings.profile') }}">
+      {{ __('Change Email') }}
+    </flux:link>
     <flux:link class="text-sm cursor-pointer" wire:click="logout">
       {{ __('Log out') }}
     </flux:link>

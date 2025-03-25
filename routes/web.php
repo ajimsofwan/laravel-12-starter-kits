@@ -10,16 +10,15 @@ Route::get('/lang/{locale}', function (string $locale) {
   return redirect()->back();
 })->name('locale');
 
-Route::view('/', 'landing/index')->name('home');
-Route::view('/welcome', 'welcome')->name('welcome');
-Route::view('vpn-remote', 'landing/vpn-remote');
-Route::view('vpn-game', 'landing/vpn-game');
-Route::view('mikhmon-online', 'landing/mikhmon-online');
-Route::view('ddns', 'landing/ddns');
-Route::view('about', 'landing/about')->name('about');
-Route::view('contact', 'landing/contact')->name('contact');
-Route::view('terms', 'landing/terms')->name('terms');
-Route::view('privacy', 'landing/privacy')->name('privacy');
+Route::view('/', 'landing.index')->name('home');
+Route::view('vpn-remote', 'landing.vpn-remote');
+Route::view('vpn-game', 'landing.vpn-game');
+Route::view('mikhmon-online', 'landing.mikhmon-online');
+Route::view('ddns', 'landing.ddns');
+Route::view('about', 'landing.about')->name('about');
+Route::view('contact', 'landing.contact')->name('contact');
+Route::view('terms', 'landing.terms')->name('terms');
+Route::view('privacy', 'landing.privacy')->name('privacy');
 Route::view('profile', 'profile')->middleware(['auth'])->name('profile');
 
 Route::view('dashboard', 'dashboard')
@@ -34,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
   Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
   // admin
   Route::middleware(['role:admin|moderator'])->group(function () {
+    Route::view('users', 'admin.users')->name('users');
     Volt::route('settings/application', 'settings.application')->name('settings.application');
   });
 });

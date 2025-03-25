@@ -1,13 +1,13 @@
 @props(['active', 'icon' => 'play-circle'])
 
 <a {{ $attributes }} @click="open = !open"
-  class="flex w-full font-medium text-zinc-600 hover:bg-accent-content/10 dark:text-zinc-300 {{ $active ?? false ? 'active' : '' }}"
+  class="flex w-full font-medium text-zinc-600 hover:bg-primary/10 dark:text-zinc-300 {{ $active ?? false ? 'active' : '' }}"
   :aria-expanded="open.toString()">
   <div class="flex flex-1 items-center px-6 py-2.5 w-full group">
-    <div class="flex-shrink-0 size-5 group-hover:text-accent-content">
+    <div class="flex-shrink-0 size-5 group-hover:text-primary dark:group-hover:text-primary-light">
       <flux:icon name="{{ $icon }}" class="size-5" />
     </div>
-    <div class="flex-1 ml-3 text-left whitespace-nowrap group-hover:text-primary">
+    <div class="flex-1 ml-3 text-left whitespace-nowrap group-hover:text-primary dark:group-hover:text-primary-light">
       {{ $slot }}</div>
     <svg aria-hidden="true" class="size-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd"
