@@ -134,8 +134,14 @@
     </div>
   </flux:header>
 
-  <flux:main class="dark:bg-zinc-900">
-    {{ $slot }}
+  <flux:main class="dark:bg-zinc-900 p-0! flex flex-col justify-between min-h-max">
+    <div class="p-4">
+      {{ $slot }}
+    </div>
+    <footer
+      class="h-auto p-4 pt-5 text-sm text-center border-t text-zinc-600 border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">
+      Copyright {{ date('Y') }} &copy; {{ config('app.name', 'Laravel') }} v2.0
+    </footer>
   </flux:main>
 
   @fluxScripts
