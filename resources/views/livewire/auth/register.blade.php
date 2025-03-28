@@ -45,9 +45,9 @@ new #[Layout('components.layouts.auth')] class extends Component {
 }; ?>
 
 <div class="flex flex-col gap-6">
-  <x-slot:title>{{ __('Sign Up') }}</x-slot>
-  <x-slot:description>{{ __('Create an account') }}</x-slot>
-  <x-slot:keywords>{{ __('sign up, register, ') }} {{ strtolower(config('app.name')) }}</x-slot>
+  <x-slot:title>{{ __('Sign up') }}</x-slot>
+  <x-slot:description>{{ __('Create an account') }}.</x-slot>
+  <x-slot:keywords>{{ __('daftar, sign up, register,') }} {{ strtolower(config('app.name')) }}.</x-slot>
   <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
   <!-- Session Status -->
   <x-auth-session-status class="text-center" :status="session('status')" />
@@ -59,11 +59,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
     <!-- Email Address -->
     <flux:input wire:model="email" :label="__('Email address')" type="email" required autocomplete="email"
-      placeholder="email@example.com" />
+      placeholder="jhon@mail.com" />
 
     <!-- Phone -->
     <flux:field>
-      <flux:label>{{ __('Phone') }}</flux:label>
+      <flux:label>{{ __('Phone number') }}</flux:label>
       <div wire:ignore>
         <flux:input id="intl-tel-input" type="text" />
       </div>
@@ -79,7 +79,17 @@ new #[Layout('components.layouts.auth')] class extends Component {
     <flux:input wire:model="password_confirmation" :label="__('Confirm password')" type="password" required
       autocomplete="new-password" :placeholder="__('Confirm password')" />
 
-    <flux:checkbox wire:model="terms" label="I agree to the terms and conditions" />
+    <div class="inline-flex items-center">
+      <flux:checkbox wire:model="terms" />
+      <input wire:model="terms" type="checkbox" id="terms" class="hidden">
+      <label for="terms" class="inline-flex items-center">
+        <span class="text-sm text-gray-600 ms-2 dark:text-gray-400">{{ __('Agree with') }} <flux:link
+            :href="route('terms')">{{ __('Terns of Service') }}</flux:link> {{ __('and') }} <flux:link
+            :href="route('privacy')">{{ __('Privacy Policy') }}</flux:link>
+        </span>
+      </label>
+    </div>
+    <flux:error name="terms" />
 
     <!-- Cloudflare Turnstile -->
     <div>

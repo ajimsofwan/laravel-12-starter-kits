@@ -1,7 +1,8 @@
 <x-layouts.landing>
   <x-slot:title>{{ __('Layanan Tunnel Untuk Router & Device') }}</x-slot>
   <x-slot:description>
-    {{ config('app.name', 'Laravel') }} {{ __('adalah penyedia layanan tunneling untuk mikrotik seperti VPN Remote, VPN Game, DDNS dan Hosting Mikhmon Online.') }}
+    {{ config('app.name', 'Laravel') }}
+    {{ __('adalah penyedia layanan tunneling untuk mikrotik seperti VPN Remote, VPN Game, DDNS dan Hosting Mikhmon Online.') }}
   </x-slot>
   <x-slot:keywords>vpn remote mikrotik, vpn game, hosting mikhmon online, free ddns service.</x-slot:keywords>
   <x-slot:header>
@@ -41,13 +42,11 @@
           {{ config('app.name', 'Laravel') }}</h2>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
           {{ config('app.name', 'Laravel') }}
-          {{ __('adalah penyedia layanan tunneling untuk mikrotik seperti VPN Remote, VPN Game, DDNS dan Hosting
-                                                                                              Mikhmon Online.') }}
+          {{ __('adalah penyedia layanan tunneling untuk mikrotik seperti VPN Remote, VPN Game, DDNS dan Hosting Mikhmon Online.') }}
         </p>
         <p class="mb-6 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
           {{ __('Dengan') }} {{ config('app.name', 'Laravel') }},
-          {{ __('Anda dapat mengakses device dan router Anda dimanapun dengan mudah menggunakan layanan tunneling
-                                                                                              yang kami sediakan.') }}
+          {{ __('Anda dapat mengakses device dan router Anda dimanapun dengan mudah menggunakan layanan tunneling yang kami sediakan.') }}
         </p>
       </div>
       <div data-aos="fade-right" class="max-w-md md:order-first">
@@ -61,14 +60,10 @@
         <h2 class="mb-4 text-2xl font-semibold tracking-tight text-primary md:text-4xl">{{ __('Layanan') }}
           {{ config('app.name', 'Laravel') }}</h2>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Kami menyediakan berbagai layanan tunneling berkualitas tinggi untuk kebutuhan jaringan Anda.
-                                                                                              Dengan teknologi terkini dan dukungan 24/7, kami berkomitmen memberikan pengalaman terbaik dalam mengakses
-                                                                                              perangkat dan router dari mana saja.') }}
+          {{ __('Kami menyediakan berbagai layanan tunneling berkualitas tinggi untuk kebutuhan jaringan Anda. Dengan teknologi terkini dan dukungan 24/7, kami berkomitmen memberikan pengalaman terbaik dalam mengakses perangkat dan router dari mana saja.') }}
         </p>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Dengan infrastruktur server yang handal dan jaringan yang stabil, kami menjamin kualitas koneksi
-                                                                                              terbaik untuk setiap layanan. Nikmati kemudahan akses dan performa optimal untuk kebutuhan networking
-                                                                                              Anda.') }}
+          {{ __('Dengan infrastruktur server yang handal dan jaringan yang stabil, kami menjamin kualitas koneksi terbaik untuk setiap layanan. Nikmati kemudahan akses dan performa optimal untuk kebutuhan networking Anda.') }}
         </p>
       </div>
       <div class="flex flex-col mt-4 gap-y-2 md:mt-0">
@@ -81,8 +76,7 @@
             <div>
               <h3 class="text-lg font-semibold text-primary dark:text-primary-light">{{ __('VPN Game') }}</h3>
               <p class="text-sm text-zinc-600 dark:text-zinc-400">
-                {{ __('Layanan VPN L2TP/IPSec routing ke server game untuk pengalaman bermain game yang lebih
-                                                                                                                                                    baik.') }}
+                {{ __('Layanan VPN L2TP/IPSec routing ke server game untuk pengalaman bermain game yang lebih baik.') }}
               </p>
             </div>
           </div>
@@ -96,7 +90,7 @@
             <div>
               <h3 class="text-lg font-semibold text-yellow-600 dark:text-yellow-500">{{ __('VPN Remote') }}</h3>
               <p class="text-sm text-zinc-600 dark:text-zinc-400">
-                {{ __('Layanan VPN (OpenVpn/L2TP) untuk mengakses device dan router Anda dimanapun kapanpun.') }}
+                {{ __('Layanan VPN (OpenVpn atau L2TP) untuk mengakses device dan router Anda dimanapun kapanpun.') }}
               </p>
             </div>
           </div>
@@ -317,11 +311,9 @@
             {{ __('Apa itu') }} {{ config('app.name', 'Laravel') }}?
           </h3>
           <p class="mb-3 text-zinc-600 dark:text-zinc-400">{{ config('app.name', 'Laravel') }}
-            {{ __('adalah penyedia layanan tunneling untuk mikrotik seperti VPN Remote, VPN Game, DDNS dan Hosting
-                                                                                                                Mikhmon Online.') }}
+            {{ __('adalah penyedia layanan tunneling untuk mikrotik seperti VPN Remote, VPN Game, DDNS dan Hosting Mikhmon Online.') }}
             {{ __('Dengan') }} {{ config('app.name', 'Laravel') }},
-            {{ __('Anda dapat mengakses device dan router Anda dimanapun dengan mudah menggunakan layanan tunneling
-                                                                                                                yang kami sediakan.') }}
+            {{ __('Anda dapat mengakses device dan router Anda dimanapun dengan mudah menggunakan layanan tunneling yang kami sediakan.') }}
           </p>
         </div>
         <div>
@@ -335,10 +327,8 @@
             {{ __('Apa itu') }} VPN Remote?
           </h3>
           <p class="text-zinc-600 dark:text-zinc-400">
-            {{ __('Layanan VPN Remote Menjadi solusi untuk kamu yang sering bekerja dari jarak jauh atau membutuhkan
-                                                                                                                akses jaringan dari suatu tempat dari lokasi yang berbeda.') }}
-            {{ __('Layanan ini bisa kamu gunakan untuk mengakses service mikrotik serperti Winbox, API, Webfig atau
-                                                                                                                bisa juga device lain yang mendukung OpenVPN.') }}
+            {{ __('Layanan VPN Remote Menjadi solusi untuk kamu yang sering bekerja dari jarak jauh atau membutuhkan akses jaringan dari suatu tempat dari lokasi yang berbeda.') }}
+            {{ __('Layanan ini bisa kamu gunakan untuk mengakses service mikrotik serperti Winbox, API, Webfig atau bisa juga device lain yang mendukung OpenVPN.') }}
           </p>
         </div>
         <div>
@@ -352,9 +342,7 @@
             {{ __('Apa itu') }} Mikhmon Online?
           </h3>
           <p class="text-zinc-600 dark:text-zinc-400">
-            {{ __('MikroTik Hotspot Monitor adalah aplikasi berbasis web (MikroTik API PHP class) untuk membantu
-                                                                                                                manajemen Hotspot MikroTik. Khususnya MikroTik yang tidak mendukung User Manager dan dapat diakses
-                                                                                                                secara Online.') }}
+            {{ __('MikroTik Hotspot Monitor adalah aplikasi berbasis web (MikroTik API PHP class) untuk membantu manajemen Hotspot MikroTik. Khususnya MikroTik yang tidak mendukung User Manager dan dapat diakses secara Online.') }}
           </p>
         </div>
       </div>

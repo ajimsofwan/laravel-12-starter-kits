@@ -122,8 +122,7 @@
           </div>
           <p class="max-w-screen-sm mb-3 text-zinc-500 dark:text-zinc-400">
             {{ config('app.name') }}
-            {{ __('adalah penyedia layanan tunneling untuk mikrotik seperti VPN Remote, VPN Game, DDNS dan Hosting
-                                                                                                                                                                                                                                                Mikhmon Online.') }}
+            {{ __('adalah penyedia layanan tunneling untuk mikrotik seperti VPN Remote, VPN Game, DDNS dan Hosting Mikhmon Online.') }}
           </p>
           <p class="mb-3 text-zinc-500 dark:text-zinc-400">Jl. Rajapolah No.200 <br>
             Rajapolah

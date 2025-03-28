@@ -37,7 +37,6 @@ new #[Layout('components.layouts.auth')] class extends Component {
 <div class="flex flex-col gap-6">
   <x-slot:title>{{ __('Confirm Password') }}</x-slot>
   <x-slot:description>{{ __('This is a secure area of the application. Please confirm your password before continuing.') }}</x-slot>
-  <x-slot:keywords>{{ __('confirm password') }} {{ strtolower(config('app.name')) }}</x-slot>
   <x-auth-header :title="__('Confirm password')" :description="__('This is a secure area of the application. Please confirm your password before continuing.')" />
 
   <!-- Session Status -->

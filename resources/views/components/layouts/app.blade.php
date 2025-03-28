@@ -27,13 +27,15 @@
         @endrole
         <li x-data="{ open: {{ request()->is('settings*') ? 'true' : 'false' }} }">
           <x-nav-link-dropdown icon="server" :active="request()->is('settings*')">
-            Settings
+            {{ __('Settings') }}
           </x-nav-link-dropdown>
           <ul x-show="open" x-transition.scale.opacity.origin.top.duration.300ms x-cloak>
+            @role('admin')
             <x-nav-link-dropdown-item :href="route('settings.application')"
               :active="request()->routeIs('settings.application')" wire:navigate>
               {{ __('Application') }}
             </x-nav-link-dropdown-item>
+            @endrole
             <x-nav-link-dropdown-item :href="route('settings.profile')" :active="request()->routeIs('settings.profile')"
               wire:navigate>
               {{ __('Profile') }}
@@ -65,19 +67,14 @@
 
     <!-- Desktop User Menu -->
     <flux:dropdown position="bottom" align="start" class="px-4">
-      <flux:profile :name="auth()->user()->name" :initials="auth()->user()->initials()"
-        icon-trailing="chevrons-up-down" />
+      <flux:profile :name="auth()->user()->name" icon-trailing="chevrons-up-down" avatar:color="blue"
+        initials="{{ auth()->user()->initials() }}" />
 
       <flux:menu class="w-[220px]">
         <flux:menu.radio.group>
           <div class="p-0 text-sm font-normal">
             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-              <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                <span
-                  class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
-                  {{ auth()->user()->initials() }}
-                </span>
-              </span>
+              <flux:avatar name="{{ auth()->user()->name }}" color="blue" initials="{{ auth()->user()->initials() }}" />
 
               <div class="grid flex-1 text-left text-sm leading-tight">
                 <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
@@ -111,6 +108,18 @@
 
     <flux:spacer />
 
+    <flux:dropdown>
+      @php($locale = ['en' => 'English', 'id' => 'Indonesia'])
+      <flux:button variant="ghost" icon:trailing="chevron-down">
+        <flux:icon.language class="size-5" /> <span class="hidden md:block">{{ $locale[session()->get('locale', 'id')]
+          }}</span>
+      </flux:button>
+      <flux:menu class="mt-2">
+        <flux:navmenu.item href="{{ route('locale', ['locale' => 'id']) }}" wire:navigate>Indonesia</flux:navmenu.item>
+        <flux:navmenu.item href="{{ route('locale', ['locale' => 'en']) }}" wire:navigate>English</flux:navmenu.item>
+      </flux:menu>
+    </flux:dropdown>
+
     <div x-data>
       <button x-show="$flux.appearance == 'dark' || $flux.appearance == 'system'" @click="$flux.appearance = 'light'"
         x-transition:enter.scale.80 x-cloak type="button"
@@ -123,45 +132,6 @@
         <flux:icon.moon variant="solid" class="size-6" />
       </button>
     </div>
-
-    {{-- <flux:dropdown position="top" align="end">
-      <flux:profile :initials="auth()->user()->initials()" icon-trailing="chevron-down" />
-
-      <flux:menu>
-        <flux:menu.radio.group>
-          <div class="p-0 text-sm font-normal">
-            <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-              <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                <span
-                  class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
-                  {{ auth()->user()->initials() }}
-                </span>
-              </span>
-
-              <div class="grid flex-1 text-left text-sm leading-tight">
-                <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
-                <span class="truncate text-xs">{{ auth()->user()->email }}</span>
-              </div>
-            </div>
-          </div>
-        </flux:menu.radio.group>
-
-        <flux:menu.separator />
-
-        <flux:menu.radio.group>
-          <flux:menu.item href="/settings/profile" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
-        </flux:menu.radio.group>
-
-        <flux:menu.separator />
-
-        <form method="POST" action="{{ route('logout') }}" class="w-full">
-          @csrf
-          <flux:menu.item as="button" type="submit" icon="arrow-right-start-on-rectangle" class="w-full">
-            {{ __('Log Out') }}
-          </flux:menu.item>
-        </form>
-      </flux:menu>
-    </flux:dropdown> --}}
   </flux:header>
 
   <flux:main class="dark:bg-zinc-900">

@@ -1,13 +1,14 @@
 <x-layouts.landing>
   <x-slot:title>{{ __('Hubungi Kami') }}</x-slot>
-  <x-slot:description>{{ __('Hubungi kami dan kami akan menghubungi Anda sesegera mungkin.') }} {{ config('app.name', 'Laravel') }}.</x-slot>
+  <x-slot:description>{{ __('Hubungi kami dan kami akan menghubungi Anda sesegera mungkin.') }}
+    {{ config('app.name', 'Laravel') }}.</x-slot>
   <x-slot:keywords>vpn game, vpn game mikrotik, mikrotik vpn game, l2tp vpn mikrotik, vpn l2tp murah.
   </x-slot:keywords>
   <x-slot:header>
     <section x-data="{ show: false }" x-init="show = true">
       <div class="max-w-screen-xl px-4 py-8 mx-auto sm:py-16 lg:px-6">
         <div data-aos="fade-down" class="mb-8 text-center lg:mb-16">
-          <h1 class="mb-4 text-4xl font-semibold tracking-tight text-primary ">{{ __('Kontak Kami') }}</h1>
+          <h1 class="mb-4 text-4xl font-semibold tracking-tight text-primary ">{{ __('Hubungi Kami') }}</h1>
           <p class="text-zinc-600 sm:text-xl dark:text-zinc-400">
             {{ __('Hubungi kami dan kami akan menghubungi Anda sesegera mungkin.') }}</p>
         </div>

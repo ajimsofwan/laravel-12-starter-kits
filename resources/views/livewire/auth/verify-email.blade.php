@@ -35,8 +35,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 }; ?>
 
 <div class="mt-4 flex flex-col gap-6">
-  <x-slot:title>{{ __('Verify Email') }}</x-slot>
-  <x-slot:keywords>{{ __('verify email') }} {{ strtolower(config('app.name')) }}</x-slot>
+  <x-slot:title>{{ __('Verify email') }}</x-slot>
   <flux:text class="text-center">
     {{ __('Please verify your email address by clicking on the link we just emailed to you.') }}
   </flux:text>

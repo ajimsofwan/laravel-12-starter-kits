@@ -1,6 +1,7 @@
 <x-layouts.landing>
   <x-slot:title>{{ __('Layanan Mikhmon Online') }}</x-slot>
-  <x-slot:description>{{ __('Akses Mikhmon Secara Online kapan saja dengan Layanan Mikhmon Online dari') }} {{ config('app.name', 'Laravel') }}.</x-slot>
+  <x-slot:description>{{ __('Akses Mikhmon Secara Online kapan saja dengan Layanan Mikhmon Online dari') }}
+    {{ config('app.name', 'Laravel') }}.</x-slot>
   <x-slot:keywords>mikhmon online, hosting mikhmon, mikhmon online murah, mikhmon online ros v7.</x-slot:keywords>
   <x-slot:header>
     <section id="hero" x-data="{ show: false }" x-init="show = true">
@@ -79,12 +80,10 @@
         <h2 class="mb-4 text-2xl font-semibold tracking-tight text-primary md:text-4xl ">
           {{ __('Monitoring Client Hotspot Secara Online Kapan Saja') }}</h2>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Mikhmon adalah aplikasi inovatif untuk pengelolaan hotspot mikrotik berbasis web yang telah menjadi
-                        solusi terbaik untuk pengelolaan hotspot mikrotik dengan mudah dan efisien.') }}
+          {{ __('Mikhmon adalah aplikasi inovatif untuk pengelolaan hotspot mikrotik berbasis web yang telah menjadi solusi terbaik untuk pengelolaan hotspot mikrotik dengan mudah dan efisien.') }}
         </p>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Kami menyediakan layanan Mikhmon Online sebagai solusi untuk memudahkan Anda dalam mengatur hotspot
-                        mikrotik secara online kapan saja.') }}
+          {{ __('Kami menyediakan layanan Mikhmon Online sebagai solusi untuk memudahkan Anda dalam mengatur hotspot mikrotik secara online kapan saja.') }}
         </p>
       </div>
       <div data-aos="fade-right" class="max-w-md md:order-first">
@@ -162,9 +161,7 @@
               {{ __('Apakah Mikhmon Online bisa digunakan di beberapa Mikrotik?') }}
             </h3>
             <p class="mb-3 text-zinc-600 dark:text-zinc-400">
-              {{ __('Ya, Mikhmon Online dapat digunakan di beberapa mikrotik, namun kami hanya menyediakan 1 VPN
-                                Remote API untuk 1 akun hotsting. Jika ingin menggunakan lebih dari 1 mikrotik, silahkan order
-                                tambahan layanan VPN Remote untuk masing-masing mikrotik.') }}
+              {{ __('Ya, Mikhmon Online dapat digunakan di beberapa mikrotik, namun kami hanya menyediakan 1 VPN Remote API untuk 1 akun hotsting. Jika ingin menggunakan lebih dari 1 mikrotik, silahkan order tambahan layanan VPN Remote untuk masing-masing mikrotik.') }}
             </p>
           </div>
         </div>
@@ -180,8 +177,7 @@
               {{ __('Apakah saya akan dapat akses ke Panel Hosting?') }}
             </h3>
             <p class="text-zinc-600 dark:text-zinc-400">
-              {{ __('Tidak, Untuk alasan keamanan, kami tidak memberikan akses ke panel hosting. Anda hanya dapat
-                                menggunakan Mikhmon Online untuk monitoring hotspot mikrotik Anda.') }}
+              {{ __('Tidak, Untuk alasan keamanan, kami tidak memberikan akses ke panel hosting. Anda hanya dapat menggunakan Mikhmon Online untuk monitoring hotspot mikrotik Anda.') }}
             </p>
           </div>
         </div>

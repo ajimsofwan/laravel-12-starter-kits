@@ -26,8 +26,8 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
 <div class="flex flex-col gap-6">
   <x-slot:title>{{ __('Forgot Password') }}</x-slot>
-  <x-slot:description>{{ __('Enter your email to receive a password reset link.') }}</x-slot>
-  <x-slot:keywords>{{ __('forgot password') }} {{ strtolower(config('app.name')) }}</x-slot>
+  <x-slot:description>{{ __('Enter your email to receive a password reset link') }}.</x-slot>
+  <x-slot:keywords>{{ __('Forgot password') }} {{ strtolower(config('app.name')) }}.</x-slot>
   <x-auth-header :title="__('Forgot password')" :description="__('Enter your email to receive a password reset link')" />
 
   <!-- Session Status -->
@@ -35,8 +35,8 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
   <form wire:submit="sendPasswordResetLink" class="flex flex-col gap-6">
     <!-- Email Address -->
-    <flux:input wire:model="email" :label="__('Email Address')" type="email" required autofocus
-      placeholder="email@example.com" />
+    <flux:input wire:model="email" :label="__('Email address')" type="email" required autofocus
+      placeholder="jhon@mail.com" />
 
     <!-- Cloudflare Turnstile -->
     <div>
@@ -45,11 +45,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
       <flux:error name="turnstile_challenge" />
     </div>
 
-    <flux:button variant="primary" type="submit" class="w-full">{{ __('Email password reset link') }}</flux:button>
+    <flux:button variant="primary" type="submit" class="w-full">{{ __('Send') }}</flux:button>
   </form>
 
   <div class="space-x-1 text-center text-sm text-zinc-400">
     {{ __('Or, return to') }}
-    <flux:link :href="route('login')">{{ __('log in') }}</flux:link>
+    <flux:link :href="route('login')">{{ __('Log in') }}</flux:link>
   </div>
 </div>

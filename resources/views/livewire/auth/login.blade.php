@@ -85,8 +85,8 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
 <div class="flex flex-col gap-6">
   <x-slot:title>{{ __('Login') }}</x-slot>
-  <x-slot:description>{{ __('Login to your account') }}</x-slot>
-  <x-slot:keywords>{{ __('login') }} {{ strtolower(config('app.name')) }}</x-slot>
+  <x-slot:description>{{ __('Log in to your account') }}.</x-slot>
+  <x-slot:keywords>{{ __('login') }} {{ strtolower(config('app.name')) }}.</x-slot>
   <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
 
   <!-- Session Status -->
@@ -95,7 +95,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
   <form wire:submit="login" class="flex flex-col gap-6">
     <!-- Email Address -->
     <flux:input wire:model="email" :label="__('Email address')" type="email" required autofocus autocomplete="email"
-      placeholder="email@example.com" />
+      placeholder="jhon@mail.com" />
 
     <!-- Password -->
     <div class="relative">

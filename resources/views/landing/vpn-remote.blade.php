@@ -1,7 +1,9 @@
 <x-layouts.landing>
   <x-slot:title>{{ __('Layanan VPN Remote') }}</x-slot>
-  <x-slot:description>{{ __('Akses remote ke device dan router Anda dimanapun kapanpun dengan layanan VPN Remote dari') }} {{ config('app.name', 'Laravel') }}.</x-slot>
-  <x-slot:keywords>vpn remote mikrotik, mikrotik remote access vpn, mikrotik vpn remote access, remote vpn mikrotik, remote mikhmon.</x-slot:keywords>
+  <x-slot:description>{{ __('Akses remote ke device dan router Anda dimanapun kapanpun dengan layanan VPN Remote dari') }}
+    {{ config('app.name', 'Laravel') }}.</x-slot>
+  <x-slot:keywords>vpn remote mikrotik, mikrotik remote access vpn, mikrotik vpn remote access, remote vpn mikrotik,
+    remote mikhmon.</x-slot:keywords>
   <x-slot:header>
     <section id="hero" x-data="{ show: false }" x-init="show = true">
       <div
@@ -79,17 +81,13 @@
         <h2 class="mb-4 text-2xl font-semibold tracking-tight text-primary md:text-4xl ">
           {{ __('Kemudahan Akses Device Mikrotik atau Device Lain Dimanapun') }}</h2>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Salah satu layanan kami adalah VPN Remote. VPN Remote merupakan layanan yang menggunakan OpenVPN
-                        yang berfungsi untuk meremote perangkat diluar jaringan sebagai alternatif bagi kamu yang tidak mempunya
-                        IP Public.') }}
+          {{ __('Salah satu layanan kami adalah VPN Remote. VPN Remote merupakan layanan yang menggunakan OpenVPN yang berfungsi untuk meremote perangkat diluar jaringan sebagai alternatif bagi kamu yang tidak mempunya IP Public.') }}
         </p>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Layanan VPN Remote Menjadi solusi untuk kamu yang sering bekerja dari jarak jauh atau membutuhkan
-                        akses jaringan dari suatu tempat dari lokasi yang berbeda.') }}
+          {{ __('Layanan VPN Remote Menjadi solusi untuk kamu yang sering bekerja dari jarak jauh atau membutuhkan akses jaringan dari suatu tempat dari lokasi yang berbeda.') }}
         </p>
         <p class="mb-6 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Layanan ini bisa kamu gunakan untuk mengakses service mikrotik serperti Winbox, API, Webfig atau
-                        bisa juga device lain yang mendukung OpenVPN.') }}
+          {{ __('Layanan ini bisa kamu gunakan untuk mengakses service mikrotik serperti Winbox, API, Webfig atau bisa juga device lain yang mendukung OpenVPN.') }}
         </p>
       </div>
       <div data-aos="fade-right" class="max-w-md md:order-first">
@@ -168,9 +166,7 @@
               {{ __('Apakah VPN Remote hanya digunakan untuk Mikrotik?') }}
             </h3>
             <p class="mb-3 text-zinc-600 dark:text-zinc-400">
-              {{ __('VPN Remote dapat digunakan untuk Mikrotik dan device lain yang mendukung OpenVPN. Anda juga
-                                dapat menggunakan layanan ini untuk device yang terhubung ke router Mikrotik dengan menggunakan port
-                                forwarding.') }}
+              {{ __('VPN Remote dapat digunakan untuk Mikrotik dan device lain yang mendukung OpenVPN. Anda juga dapat menggunakan layanan ini untuk device yang terhubung ke router Mikrotik dengan menggunakan port forwarding.') }}
             </p>
           </div>
         </div>
@@ -186,8 +182,7 @@
               {{ __('Apakah VPN Remote dapat digunakan pada beberapa device?') }}
             </h3>
             <p class="text-zinc-600 dark:text-zinc-400">
-              {{ __('Tidak, hanya dapat digunakan pada satu device. Namun, kamu dapat menggunakan satu akun untuk
-                                beberapa port. Harga dihitung berdasarkan jumlah port yang digunakan.') }}
+              {{ __('Tidak, hanya dapat digunakan pada satu device. Namun, kamu dapat menggunakan satu akun untuk beberapa port. Harga dihitung berdasarkan jumlah port yang digunakan.') }}
             </p>
           </div>
         </div>

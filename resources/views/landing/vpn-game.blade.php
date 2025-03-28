@@ -1,6 +1,7 @@
 <x-layouts.landing>
   <x-slot:title>{{ __('Layanan VPN Game') }}</x-slot>
-  <x-slot:description>{{ __('Routing ke server game dengan VPN L2TP/IPSec untuk pengalaman bermain game yang lebih baik dari') }} {{ config('app.name', 'Laravel') }}.</x-slot>
+  <x-slot:description>{{ __('Routing ke server game dengan VPN L2TP/IPSec untuk pengalaman bermain game yang lebih baik dari') }}
+    {{ config('app.name', 'Laravel') }}.</x-slot>
   <x-slot:keywords>vpn game, vpn game mikrotik, mikrotik vpn game, l2tp vpn mikrotik, vpn l2tp murah.
   </x-slot:keywords>
   <x-slot:header>
@@ -80,12 +81,10 @@
         <h2 class="mb-4 text-2xl font-semibold tracking-tight text-primary md:text-4xl ">
           {{ __('VPN Game sebagai solusi untuk koneksi Game yang lebih stabil') }}</h2>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Menggunakan VPN untuk meningkatkan stabilitas koneksi game bisa menjadi solusi, terutama jika Anda
-                                  menghadapi masalah seperti ping tinggi atau packet loss.') }}
+          {{ __('Menggunakan VPN untuk meningkatkan stabilitas koneksi game bisa menjadi solusi, terutama jika Anda menghadapi masalah seperti ping tinggi atau packet loss.') }}
         </p>
         <p class="mb-3 font-light text-zinc-600 md:text-lg dark:text-zinc-400">
-          {{ __('Namun, penting untuk dipahami bahwa efeknya dapat bervariasi tergantung pada beberapa faktor,
-                                  termasuk lokasi server VPN, infrastruktur jaringan, dan permainan yang Anda mainkan.') }}
+          {{ __('Namun, penting untuk dipahami bahwa efeknya dapat bervariasi tergantung pada beberapa faktor, termasuk lokasi server VPN, infrastruktur jaringan, dan permainan yang Anda mainkan.') }}
         </p>
       </div>
       <div data-aos="fade-right" class="max-w-md md:order-first">
@@ -169,8 +168,7 @@
               {{ __('Apakah VPN Game menjamin koneksi game yang stabil?') }}
             </h3>
             <p class="mb-3 text-zinc-600 dark:text-zinc-400">
-              {{ __('Tidak, karena koneksi game dipengaruhi oleh banyak faktor seperti lokasi server game,
-                                              infrastruktur jaringan, dan ISP yang digunakan.') }}
+              {{ __('Tidak, karena koneksi game dipengaruhi oleh banyak faktor seperti lokasi server game, infrastruktur jaringan, dan ISP yang digunakan.') }}
             </p>
           </div>
         </div>
@@ -186,8 +184,7 @@
               {{ __('Apakah VPN Game bisa digunakan untuk kebutuhan lain?') }}
             </h3>
             <p class="text-zinc-600 dark:text-zinc-400">
-              {{ __('Tidak, layanan ini hanya dapat digunakan untuk kebutuhan game. Jika digunakan untuk kegiatan
-                                              lain, maka akan dianggap melanggar ketentuan layanan.') }}
+              {{ __('Tidak, layanan ini hanya dapat digunakan untuk kebutuhan game. Jika digunakan untuk kegiatan lain, maka akan dianggap melanggar ketentuan layanan.') }}
             </p>
           </div>
         </div>
